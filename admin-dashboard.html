@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - Administración CRUD</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            ⚡ Edu<span class="logo-accent">Track</span> <span style="font-size: 0.8rem; background: #0052FF; color: white; padding: 2px 8px; border-radius: 4px; margin-left: 8px;">ADMIN</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="student-dashboard.html">Mi Dashboard</a></li>
+            <li><a href="admin-dashboard.html" class="active">Admin</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="switchTab('courses')">Gestión de Cursos</button>
+            <button class="tab-btn" onclick="switchTab('students')">Gestión de Estudiantes</button>
+        </div>
+
+        <!-- Seccion Cursos -->
+        <section id="section-courses">
+            <div class="admin-toolbar">
+                <input type="text" id="search-course" class="search-input" placeholder="Buscar curso por nombre...">
+                <button class="btn btn-primary" onclick="openCourseModal()">+ Nuevo Curso</button>
+            </div>
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Inicio</th>
+                            <th>Duración</th>
+                            <th>Modalidad</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-courses-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Seccion Estudiantes -->
+        <section id="section-students" style="display: none;">
+            <div class="admin-toolbar">
+                <input type="text" id="search-student" class="search-input" placeholder="Buscar estudiante por nombre o correo...">
+                <button class="btn btn-primary" onclick="openStudentModal()">+ Nuevo Estudiante</button>
+            </div>
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Correo</th>
+                            <th>Inscripción</th>
+                            <th>Inversión</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-students-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Curso -->
+    <div id="course-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 id="course-modal-title">Nuevo Curso</h3>
+            <form id="course-form" style="margin-top: 1rem;">
+                <input type="hidden" id="course-index">
+                <div class="form-group">
+                    <label>ID Curso</label>
+                    <input type="text" id="course-id" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre del Curso</label>
+                    <input type="text" id="course-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Fecha de Inicio</label>
+                    <input type="date" id="course-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Duración</label>
+                    <input type="text" id="course-duration" placeholder="Ej: 8 semanas" required>
+                </div>
+                <div class="form-group">
+                    <label>Modalidad</label>
+                    <select id="course-async">
+                        <option value="false">En Vivo (Sincrónico)</option>
+                        <option value="true">Asincrónico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Valor (COP)</label>
+                    <input type="number" id="course-price" step="50000" required>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Estudiante -->
+    <div id="student-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 id="student-modal-title">Nuevo Estudiante</h3>
+            <form id="student-form" style="margin-top: 1rem;">
+                <input type="hidden" id="student-index">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="student-fullname" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="student-email-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Fecha Nacimiento</label>
+                    <input type="date" id="student-dob" required>
+                </div>
+                <div class="form-group">
+                    <label>Inversión Total (COP)</label>
+                    <input type="number" id="student-investment-input" required>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/data/courses.js"></script>
+    <script src="./js/data/students.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+.hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    color: #ffffff;
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+.hero-tag {
+    display: inline-block;
+    background-color: rgba(0, 210, 255, 0.15);
+    color: var(--color-detalles);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-detalles);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.course-card {
+    background: var(--color-de-tarjetas);
+    border: 1px solid var(--color-de-fondo-secundario);
+    border-radius: var(--radio-borde);
+    padding: 1.75rem;
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.course-price {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-de-enlace);
+    margin: 1rem 0;
+}
+
+/* Formulario Lead */
+.conversion-section {
+    background-color: var(--color-de-fondo-secundario);
+    border-radius: var(--radio-borde);
+    padding: 3rem;
+    max-width: 700px;
+    margin: 4rem auto 0;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1rem;
+    font-family: var(--fuente-cuerpo);
+}
