@@ -27,9 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     assignedGrid.innerHTML = myCourses.map(course => `
       <article class="course-card">
         <div>
-          <span class="badge badge-cyan">Completado</span>
-          <h3 style="margin-top: 0.5rem;">${course.nombre_curso}</h3>
-          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Duración: ${course.duracion}</p>
+          <div class="course-card-header">
+            <span class="badge badge-cyan">Completado</span>
+            <span style="font-size: 0.85rem; color: #64748b;">${course.duracion}</span>
+          </div>
+          <h3>${course.nombre_curso}</h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Modalidad: <strong>${course.es_asincronico ? 'Asincrónico' : 'En Vivo'}</strong></p>
         </div>
         <button class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Ver Certificado</button>
       </article>
@@ -46,20 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
       </tr>
     `).join('');
   
-    // Cursos Recomendados (Cursos no tomados)
+    // Cursos Recomendados (Renderizados en Tarjetas / Cards)
     const recommendedGrid = document.getElementById('recommended-courses-grid');
     const recommended = courses.filter(c => !currentStudent.cursos_completados.includes(c.id_curso)).slice(0, 3);
   
     recommendedGrid.innerHTML = recommended.map(course => `
-      <article class="course-card">
+      <article class="course-card recommended-card">
         <div>
-          <span class="badge badge-blue">${course.duracion}</span>
-          <h3 style="margin-top: 0.5rem;">${course.nombre_curso}</h3>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem;">Próximo inicio: ${course.proxima_fecha_inicio}</p>
+          <div class="course-card-header">
+            <span class="badge ${course.es_asincronico ? 'badge-cyan' : 'badge-blue'}">
+              ${course.es_asincronico ? 'Asincrónico' : 'En Vivo'}
+            </span>
+            <span class="badge badge-blue">Sugerido</span>
+          </div>
+          <h3 style="margin-top: 0.75rem;">${course.nombre_curso}</h3>
+          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-de-texto); display: flex; flex-direction: column; gap: 0.4rem;">
+            <p>⏳ <strong>Duración:</strong> ${course.duracion}</p>
+            <p>📅 <strong>Próximo Inicio:</strong> ${course.proxima_fecha_inicio}</p>
+          </div>
         </div>
-        <div>
-          <div class="course-price">${StorageManager.formatCOP(course.valor_individual)} COP</div>
-          <a href="index.html#registro" class="btn btn-primary" style="width: 100%;">Inscribirme</a>
+        <div style="margin-top: 1.5rem; border-top: 1px solid var(--color-de-fondo-secundario); padding-top: 1rem;">
+          <div class="course-price" style="margin: 0 0 1rem 0; font-size: 1.4rem;">${StorageManager.formatCOP(course.valor_individual)} ${course.moneda}</div>
+          <a href="index.html#registro" onclick="localStorage.setItem('selected_course', '${course.id_curso}')" class="btn btn-primary" style="width: 100%;">Inscribirme a este curso</a>
         </div>
       </article>
     `).join('');
