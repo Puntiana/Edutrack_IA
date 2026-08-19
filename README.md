@@ -4,6 +4,25 @@ EduTrack es una solución web integral diseñada para transformar la educación 
 
 ---
 
+## 🎨 Guía de Estilos Visuales & Branding
+
+La plataforma utiliza una identidad visual limpia, moderna y enfocada en el sector EdTech, definida bajo las siguientes variables globales de CSS (`css/estilos.css`):
+
+### 🎨 Paleta de Colores
+* **Fondo Principal Claro (`--color-de-fondo`):** `#F8FAFC` *(Soft Slate)*
+* **Contenedores/Bordes (`--color-de-fondo-secundario`):** `#E2E8F0` *(Light Slate)*
+* **Tarjetas (`--color-de-tarjetas`):** `#FFFFFF` *(Blanco puro)*
+* **Encabezados (`--color-de-titulos`):** `#0F172A` *(Dark Slate)*
+* **Acciones/Enlaces (`--color-de-enlace`):** `#0052FF` *(Tech Blue)*
+* **Texto de Lectura (`--color-de-texto`):** `#334155` *(Slate Oscuro)*
+* **Acentos y Badges (`--color-detalles`):** `#00D2FF` *(Electric Cyan)*
+
+### 🔤 Tipografías
+* **Títulos y Encabezados (`h1` - `h6`):** `Roboto`, sans-serif (Google Fonts)
+* **Cuerpo de Texto y Formularios:** `Inter`, sans-serif (Google Fonts)
+
+---
+
 ## 📂 Estructura del Proyecto
 
 ```text
